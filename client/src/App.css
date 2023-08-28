@@ -1,0 +1,360 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Montserrat:wght@500&family=Quicksand:wght@500&family=Ubuntu:wght@500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand";
+}
+
+a {
+  cursor: pointer;
+}
+
+body {
+  color: #222;
+}
+
+img {
+  max-width: 100%;
+}
+
+main {
+  padding: 10px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  align-items: center;
+}
+
+header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header a.blog-logo {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+header nav {
+  display: flex;
+  gap: 24px;
+}
+
+.postt-image {
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.postt-image:hover {
+  transform: scale(1.05);
+}
+
+.post {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin: 5rem 0;
+  margin-bottom: 30px;
+}
+
+@media screen and (min-width: 700px) {
+  .post {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+.post .post-texts h2 {
+  margin: 0rem 0;
+  font-size: 2rem;
+  font-family: "Ubuntu";
+}
+
+.post .post-texts a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.post p.post-info {
+  margin: 24px 0;
+  color: #888;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  gap: 10px;
+}
+
+.post p.post-info a.post-author {
+  color: #333;
+}
+
+.post p.post-summary {
+  margin: 10px 0;
+  line-height: 1.8rem;
+  font-family: "Montserrat";
+}
+
+form.login,
+form.register {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input {
+  display: block;
+  margin-bottom: 5px;
+  width: 100%;
+  padding: 5px 7px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+button {
+  cursor: pointer;
+  font-family: "Ubuntu";
+  margin-top: 1rem;
+  font-weight: 900;
+  width: 100%;
+  display: block;
+  background-color: #555;
+  border: 0;
+  color: #fff;
+  border-radius: 5px;
+  padding: 7px 0;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+}
+
+form.login h1,
+h3,
+form.register h1 {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.post-page .image {
+  max-height: 300px;
+  display: flex;
+  overflow: hidden;
+}
+
+.post-page .image img {
+  object-fit: cover;
+  object-position: center center;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.post-page a {
+  color: #795cb2;
+  font-weight: 900;
+  font-family: "Lato";
+  text-decoration: underline;
+}
+
+.login-logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-logout span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.write-blog-icon {
+  margin-right: 0px;
+  font-size: 2rem;
+}
+
+.login-logout a {
+  margin: 0;
+  padding: 1rem;
+}
+
+.write-blog-a {
+  border-radius: 10rem;
+  background-color: #272343;
+  color: #ffffff;
+}
+
+.write-blog-a:hover {
+  filter: brightness(90%);
+}
+
+.logout-a {
+  display: flex;
+  border-radius: 10rem;
+}
+
+.logout-a p {
+  color: #66bfbf;
+}
+
+.logout-a:hover {
+  color: #904e4e;
+}
+
+.post-page{
+  text-align: center;
+}
+
+.post-page h1 {
+  text-align: center;
+  margin: 2rem;
+}
+
+.post-page time {
+  text-align: center;
+  display: block;
+  font-size: 1rem;
+  color: #aaa;
+  margin: 10px 0;
+}
+
+.post-page .post-author {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.post-page .post-author span {
+  color: #66bfbf;
+  margin-left: 0.2rem;
+  font-family: "Ubuntu";
+}
+
+.post-content {
+  line-height: 1.7rem;
+  text-align: left;
+}
+
+.content li {
+  margin-bottom: 10px;
+}
+
+.edit-row a {
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.post-page a.edit-btn {
+  text-transform: uppercase;
+  background-color: #333;
+  display: inline-flex;
+  font-family: 'Montserrat';
+  letter-spacing: 1px;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all .3s ease-in-out;
+}
+
+.post-page a.delete-btn {
+  text-transform: uppercase;
+  background-color: #d11a2a;
+  display: inline-flex;
+  font-family: 'Montserrat';
+  letter-spacing: 1px;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+  padding: 15px 30px;
+  margin-bottom: 2rem;
+  margin-left: 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all .3s ease-in-out;
+}
+
+.post-page a.edit-btn:hover{
+  opacity: .7;
+}
+
+.post-page a.delete-btn:hover{
+  opacity: .7;
+}
+
+a svg {
+  height: 20px;
+}
+
+.auth-error {
+  color: red;
+  margin: 7px 0 25px 0;
+}
+
+
+
+@media screen and (max-width: 480px) {
+  .login-logout a {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  header a.blog-logo {
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  .write-blog-icon {
+    margin-right: 3px;
+    font-size: 1rem;
+  }
+
+  .post-page a.delete-btn {
+    margin-left: 0.3rem;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .blog-logo {
+    margin-bottom: 18%;
+  }
+
+  .post-content {
+    line-height: 1.5rem;
+  }
+
+  header a.blog-logo {
+    font-size: 2rem;
+  }
+  .login-logout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login-logout a {
+    margin: 0.5rem 0;
+  }
+
+  .post-page a.edit-btn {
+    gap: 5px;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+
+  .post-page a.delete-btn {
+    gap: 5px;
+    margin-left: 0rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+}
