@@ -61,9 +61,9 @@ const createToken = (username, id) => {
   });
 };
 
-server.get('/',(req,res)=>{
-  res.send('Blog App')
-})
+server.get("/", (req, res) => {
+  res.send("Blog App");
+});
 
 server.post("/register", async (req, res) => {
   const { username, password } = req.body;
@@ -113,36 +113,49 @@ server.post("/logout", (req, res) => {
   res.status(200).send("Logged out successfully");
 });
 
-// uploadMiddleware.single("file") middleware is used to handle a single uploaded file with the field name "file" in the form.
-server.post("/post", uploadMiddleware.single("file"), async (req, res) => {
-  const { originalname, path } = req.file;
-  const parts = originalname.split(".");
-  const extension = parts[parts.length - 1];
-  const newPath = path + "." + extension;
-  // console.log(path,newPath);
-  fs.renameSync(path, newPath);
-
-  const { jwtToken } = req.cookies;
-  jwt.verify(
-    jwtToken,
-    process.env.JWT_SECRET_KEY,
-    {},
-    async (err, decodedToken) => {
-      if (err) throw err;
-      // console.log('decodedToken: ',decodedToken);
-      const { title, summary, content } = req.body;
-      const postDoc = await Post.create({
-        title,
-        summary,
-        content,
-        cover: newPath,
-        author: decodedToken.id,
-      });
-
-      res.json(postDoc);
-    }
-  );
+server.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Internal Server Error' });
 });
+
+// uploadMiddleware.single("file") middleware is used to handle a single uploaded file with the field name "file" in the form.
+server.post(
+  "/post",
+  uploadMiddleware.single("file"),
+  async (req, res, next) => {
+    try {
+      const { originalname, path } = req.file;
+      const parts = originalname.split(".");
+      const extension = parts[parts.length - 1];
+      const newPath = path + "." + extension;
+      // console.log(path,newPath);
+      fs.renameSync(path, newPath);
+
+      const { jwtToken } = req.cookies;
+      jwt.verify(
+        jwtToken,
+        process.env.JWT_SECRET_KEY,
+        {},
+        async (err, decodedToken) => {
+          if (err) throw err;
+          // console.log('decodedToken: ',decodedToken);
+          const { title, summary, content } = req.body;
+          const postDoc = await Post.create({
+            title,
+            summary,
+            content,
+            cover: newPath,
+            author: decodedToken.id,
+          });
+
+          res.json(postDoc);
+        }
+      );
+    } catch (err) {
+      next(err);
+    }
+  }
+);
 
 server.get("/post", async (req, res) => {
   const posts = await Post.find()
